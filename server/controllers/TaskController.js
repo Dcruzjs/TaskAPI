@@ -30,8 +30,8 @@ const TaskController = {
       });
   },
   updateTask: function (request, response) {
-    console.log(request.params);
-    console.log(request.body);
+    console.log("request.params: ", request.params);
+    console.log("request.body: ", request.body);
 
     if (Object.keys(request.body).length === 0) {
       response.statusMessage =
@@ -56,7 +56,7 @@ const TaskController = {
         if (task === null) {
           throw new Error("That task doesn't exist");
         } else {
-          TaskModel.deleteTask(task.title).then((result) => {
+          TaskModel.deleteTask({ title: task.title }).then((result) => {
             response.status(204).end();
           });
         }

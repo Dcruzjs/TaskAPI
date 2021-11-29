@@ -1,11 +1,16 @@
 const URL = `http://localhost:8181/new`;
 const setting = {
   method: "POST",
-  body: {
-    title: "learn angular",
-    description: "reading books",
-    completed: false,
+  headers: {
+    "Content-Type": "application/json",
   },
+  body: JSON.stringify({
+    task: {
+      title: "Learn Angular",
+      description: "Reading Books",
+      completed: false,
+    },
+  }),
 };
 
 fetch(URL, setting).then((result) => console.log(result));

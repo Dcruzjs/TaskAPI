@@ -1,5 +1,18 @@
 const mongoose = require("mongoose");
+/*
+{
+    "title":"Learn Angular",
+    "description": "Reading Books",
+    "completed": false
 
+}
+{
+    title:"Learn Angular",
+    description: "Reading Books",
+    completed: false
+
+}
+*/
 const TaskSchema = new mongoose.Schema(
   {
     title: {
@@ -28,12 +41,12 @@ const TaskModel = {
     return Task.find();
   },
   getTask: function (title) {
-    console.log(title); //{title:"title"}
+    // console.log(title); //{title:"title"}
     return Task.findOne(title);
   },
-  updateTask: function (title, fieldsToUpdate) {
+  updateTask: function (condition, fieldsToUpdate) {
     return Task.findOneAndUpdate(
-      { title },
+      condition,
       { $set: fieldsToUpdate },
       { new: true }
     );
